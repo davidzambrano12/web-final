@@ -19,6 +19,7 @@
   "homepage": "https://github.com/davidzambrano12/web-final#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
     "mysql2": "^3.15.3"
   }

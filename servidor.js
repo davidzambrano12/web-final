@@ -1,33 +1,43 @@
-//*const mysql= require("mysql2");//*
-const express=require("express");
-const path=require("path");
-const cors= require("cors");
-const { fileURLToPath } = require("url");
-const app=express();
+import express from "express";
+import mysql from "mysql2";
+import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const __filenamme = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filenamme);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-/*let conexion = mysql.createConnection({
-    host: "localhost",
-    database: "vacunacion",
-    user: "root",
-    password: "1030080",
+const app = express();
 
-})/*/
-
-
-app.set("view engine", "ejs");
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", function(req, res){
-    res.render("resgistro");
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+
+const conexion = mysql.createConnection({
+    host :"localhost",
+    user: "root",
+    password:"david",
+    database: "vacunacion",
+});
+
+conexion.connect(error =>{
+    if (error) {
+        console.error("error al conectar con mysql", error);
+        process.exit(1);
+    }
+    console.log("conectado a mysql")
+});
+
+app.get("/", (req, res)=>{
+    res.render("pagina");
 });
 
 
-app.post('/validar',(req, res) =>{
+app.post('/',(req, res) =>{
     const objeto = req.body;
     console.log(objeto);
     res.send("recibido");
