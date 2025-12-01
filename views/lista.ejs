@@ -1,0 +1,28 @@
+<h1>Registros</h1>
+
+<table border="1">
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Nombre Animal</th>
+        <th>Tipo</th>
+        <th>Especie</th>
+        <th>Edad</th>
+        <th>Vacuna</th>
+    </tr>
+
+    <% datos.forEach(item => { %>
+    <tr>
+        <td><%= item.apellido %></td>
+        <td><%= item.telefono %></td>
+        <td><%= item.correo %></td>
+        <td><%= item.nombre_animal %></td>
+        <td><%= item.tipo_animal %></td>
+        <td><%= item.especie_animal %></td>
+        <td><%= item.edad %></td>
+        <td><%= item.vacuna %></td>
+    </tr>
+    <% }) %>
+</table>

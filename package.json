@@ -2,6 +2,7 @@
   "name": "web-final-1",
   "version": "1.0.0",
   "description": "holi\r prueba 1",
+  "type" : "module",
   "main": "post.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
