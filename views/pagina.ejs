@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTRAR</title>
+</head>
+<body>
+
+    <h1>NUEVO RESGISTRO PARA VACUNACION</h1>
+    <form action="/validar" method="post">
+        <h1>Resgistro de Usuario</h1>
+        <label for="">Nombre:</label>
+        <input type="text" name="nombre" id="" placeholder="Ingrese su primer nombre">
+        <br>
+        <label for="">Apellido:</label>
+        <input type="text" name="apellido" id="" placeholder="Ingrese su apellido">
+        <br>
+        <label for="">telefono:</label>
+        <input type="tel" name="telefono" id="" placeholder="Ej: 999-999-9999">
+        <br>
+        <label for="">Correo Electronico:</label>
+        <input type="email" name="correo" id="" placeholder="Ej:@gmail.com">
+
+        <h1>Resgistro del animal o mascota</h1>
+        <label for="">Nombre del Animal:</label>
+        <input type="text" name="nombre_animal" id="" placeholder="nombre del animal">
+        <br>
+        <label for="">Tipo:</label>
+        <br>
+        <select name="tipo" id="">
+            <option value="">Mascota</option>
+            <option value="">Crianza</option>
+            <option value="">Otro</option>
+        </select>
+        <br>
+        <label for="">Especie:</label>
+        <input type="text" name="especie" id="" placeholder="Ej: Perro, cerdo, loro etc">
+        <br>
+        <label for="">Edad animal:</label>
+        <input type="number" name="edad" id="" placeholder="Ej: 2 años">
+        <br>
+        <label for="">¿Que vacuna requiere?</label>
+        <input type="text" name="vacuna" id="" placeholder="Ej: Rabia, parvovirus etc">   
+
+        <input type="submit" value="Registrar">
+
+        
+
+
+    </form>
+
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            
+        }
+        
+    </style>
+    
+</body>
+</html>

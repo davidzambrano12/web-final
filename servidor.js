@@ -1,15 +1,34 @@
-import express from "express";
-import mysql from "mysql2";
-import cors from "cors";
-import path from "path"
-import { fileURLToPath } from "url";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const app = express();
+const mysql= require("mysql2");
+const express=require("express");
+const path=require("path");
 
-app.use(cors());
+const app=express();
+
+let conexion = mysql.createConnection({
+    host: "localhost",
+    database: "vacunacion",
+    user: "root",
+    password: "1030080",
+
+})
+
+app.set("view engine", "ejs");
+
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({extended:true}));
 
-app.set("views engine", "ejs");
-app.set("views", path.join(__dirname, "views"))
+app.get("/", function(req, res){
+    res.render("resgistro");
+});
+
+
+app.post('/validar',(req, res) =>{
+    const objeto = req.body;
+    console.log(objeto);
+    res.send("recibido");
+});
+
+
+app.listen(3080, function(){
+    console.log("Servidor corriendo en http://localhost:3080")
+})
