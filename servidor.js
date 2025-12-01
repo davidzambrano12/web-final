@@ -1,19 +1,24 @@
-const mysql= require("mysql2");
+//*const mysql= require("mysql2");//*
 const express=require("express");
 const path=require("path");
-
+const cors= require("cors");
+const { fileURLToPath } = require("url");
 const app=express();
 
-let conexion = mysql.createConnection({
+const __filenamme = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filenamme);
+
+/*let conexion = mysql.createConnection({
     host: "localhost",
     database: "vacunacion",
     user: "root",
     password: "1030080",
 
-})
+})/*/
+
 
 app.set("view engine", "ejs");
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
