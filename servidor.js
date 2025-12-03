@@ -34,35 +34,47 @@ app.get("/", (req, res)=>{
     res.render("pagina");
 });
 
+app.post("/", (req, res) => {
+    const {
+        nombre,
+        apellido,
+        telefono,
+        correo,
+        nombre_animal,
+        tipo_animal,
+        especie_animal,
+        edad,
+        vacuna
+    } = req.body;
 
-app.post('/',(req, res) =>{
-    const objeto = req.body;
-    console.log(objeto);
-    res.send("recibido");
-});
+    // 1. Insertar cliente
+    const sqlCliente = `INSERT INTO clientes (nombre, apellido, telefono, correo) VALUES (?, ?, ?, ?)`;
 
-app.post("/registrar", (req, res) =>{
-    const { nombre, apellido, telefono, correo, nombre_animal, tipo_animal, especie_animal, edad, vacuna} = req.body;
+    conexion.query(sqlCliente, [nombre, apellido, telefono, correo], (err, result) => {
+        if (err) {
+            console.error("Error al insertar cliente:", err);
+            return res.status(500).json({ message: "Error al guardar cliente" });
+        }
 
-    const sqlCliente = `
-    INSERT INTO clientes (nombre, apellido, telefono, correo)
-    VALUES ( ?, ?, ?, ?)
-    `
-    conexion.query(sqlCliente,[nombre, apellido, telefono, correo], (error, resultadoCliente) => {
-        if (error) throw error;
-        const id_cliente = resultadoCliente.insertId;
+        const id_cliente = result.insertId; // ← OJO AQUÍ
 
+        // 2. Insertar mascota vinculada al cliente
         const sqlAnimal = `
-        INSERT INTO animales (id_cliente, nombre_animal, tipo_animal, especie_animal, edad, vacuna)
-        VALUES ( ?, ?, ?, ?, ?, ?)
+            INSERT INTO animales (id_cliente, nombre_animal, tipo_animal, especie_animal, edad, vacuna)
+            VALUES (?, ?, ?, ?, ?, ?)
         `;
-        conexion.query(sqlAnimal, [id_cliente, nombre_animal, tipo_animal, especie_animal, edad, vacuna], error2 => {
-            if (error2) throw error2;
 
-            res.redirect("/lista")
+        conexion.query(sqlAnimal, [id_cliente, nombre_animal, tipo_animal, especie_animal, edad, vacuna], (err2) => {
+            if (err2) {
+                console.error("Error al insertar animal:", err2);
+                return res.status(500).json({ message: "Error al guardar animal" });
+            }
+
+            res.json({ message: "Cliente y animal guardados correctamente" });
         });
     });
 });
+
 
 app.get("/lista", (req, res) => {
     const sql = `
@@ -90,6 +102,6 @@ app.get("/lista", (req, res) => {
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-app.listen(3080, function(){
-    console.log("Servidor corriendo en http://localhost:3080")
+app.listen(3000, function(){
+    console.log("Servidor corriendo en http://localhost:3000")
 })

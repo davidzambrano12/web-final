@@ -1,65 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar</title>
+    <title>Registrar Vacunación</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <h1>NUEVO RESGISTRO PARA VACUNACION</h1>
+    <h1>Registro para Vacunación</h1>
+
     <form id="form">
 
-        <h1>Resgistro de Usuario</h1>
+        <h2>Datos del Usuario</h2>
 
-        <label for="">Nombre:</label>
-        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su primer nombre">
-        <br>
-        <label for="">Apellido:</label>
-        <input type="text" name="apellido" id="apellido" placeholder="Ingrese su apellido">
-        <br>
-        <label for="">telefono:</label>
-        <input type="tel" name="telefono" id="telefono" placeholder="Ej: 999-999-9999">
-        <br>
-        <label for="">Correo Electronico:</label>
-        <input type="email" name="correo" id="email" placeholder="Ej:@gmail.com">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" id="nombre" required placeholder="Ingrese su primer nombre">
 
-        <h1>Resgistro del animal o mascota</h1>
-        <label for="">Nombre del Animal:</label>
-        <input type="text" name="nombre_animal" id="nombre_animal" placeholder="nombre del animal">
-        <br>
-        <label for="">Tipo:</label>
-        <br>
-        <select name="tipo" id="tipo_animal">
-            <option value="">Mascota</option>
-            <option value="">Crianza</option>
-            <option value="">Otro</option>
+        <label>Apellido:</label>
+        <input type="text" name="apellido" id="apellido" required placeholder="Ingrese su apellido">
+
+        <label>Teléfono:</label>
+        <input type="tel" name="telefono" id="telefono" required placeholder="Ej: 3170000000">
+
+        <label>Correo Electrónico:</label>
+        <input type="email" name="correo" id="email" required placeholder="Ej: usuario@gmail.com">
+
+
+        <h2>Datos del Animal / Mascota</h2>
+
+        <label>Nombre del Animal:</label>
+        <input type="text" name="nombre_animal" id="nombre_animal" required placeholder="Nombre del animal">
+
+        <label>Tipo:</label>
+        <select name="tipo" id="tipo_animal" required>
+            <option value="">Seleccione...</option>
+            <option value="Mascota">Mascota</option>
+            <option value="Crianza">Crianza</option>
+            <option value="Otro">Otro</option>
         </select>
-        <br>
-        <label for="">Especie:</label>
-        <input type="text" name="especie" id="especie_animal" placeholder="Ej: Perro, cerdo, loro etc">
-        <br>
-        <label for="">Edad animal:</label>
-        <input type="number" name="edad" id="edad" placeholder="Ej: 2 años">
-        <br>
-        <label for="">¿Que vacuna requiere?</label>
-        <input type="text" name="vacuna" id="vacuna" placeholder="Ej: Rabia, parvovirus etc">   
+
+        <label>Especie:</label>
+        <input type="text" name="especie" id="especie_animal" required placeholder="Ej: Perro, cerdo, loro etc">
+
+        <label>Edad del Animal:</label>
+        <input type="number" name="edad" id="edad" required placeholder="Ej: 2">
+
+        <label>Vacuna requerida:</label>
+        <input type="text" name="vacuna" id="vacuna" required placeholder="Ej: Rabia, parvovirus etc">
 
         <input type="submit" value="Registrar">
-
-        
-
-
     </form>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/post.js"></script>
 
-    <style>
-        body{
-            margin:0;
-            padding:0;
-            
-        }
-        
-    </style>
-    
 </body>
 </html>
